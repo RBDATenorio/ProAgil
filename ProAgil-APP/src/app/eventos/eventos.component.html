@@ -1,6 +1,49 @@
-<div *ngFor="let evento of eventos">
-    Tema: {{ evento.tema }}
-    <br>
-    Local: {{ evento.local }}
-    <hr>
+<div class="form-inline">
+    <div class="form-group mb-2">
+        Filtro: <input type="text" 
+                        class="form-control mr-1 ml-1 mb-2" 
+                        placeholder="Digite um tema"
+                        [(ngModel)]="filtroLista">
+    </div>
 </div>
+
+<table class="table table-stripped table-hover">
+    <thead class="thead-dark">
+        <tr>
+            <th>#</th>
+            <th>Img</th>
+            <th>Tema</th>
+            <th>Local</th>
+            <th>Data</th>
+            <th>Qtd Pessoas</th>
+            <th>Lote</th>
+            <th>opções</th>
+        </tr>
+    </thead>
+    <tbody *ngIf="eventos && eventos.length">
+        <tr *ngFor="let evento of eventosFiltrados">
+            <td> {{ evento.eventoId }} </td>
+            <td> 
+                <img src="http://localhost:5000/img/{{ evento.imagemURL }}" alt="logo"
+                [style.width.px]="imagemLargura"
+                [style.margin.px]="imagemMargem"> 
+            </td>
+            <td> {{ evento.tema }} </td>
+            <td> {{ evento.local }} </td>
+            <td> {{ evento.dataEvento }} </td>
+            <td> {{ evento.qtdPessoas }} </td>
+            <td> {{ evento.lote }} </td>
+            <td>
+                <a href="#" class="text-dark"><i class="far fa-edit mr-1"></i></a>
+                <a href="#" class="text-dark"><i class="far fa-trash-alt"></i></a>
+            </td>
+        </tr>
+    </tbody>
+    <tfoot *ngIf="!eventos">
+        <tr>
+            <td colspan="7" class="text-center">
+                <h4>Nenhum evento encontrado</h4>
+            </td>
+        </tr>
+    </tfoot>
+</table> 
