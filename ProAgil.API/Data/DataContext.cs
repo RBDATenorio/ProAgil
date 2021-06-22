@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using ProAgil.API.Models;
+using ProAgil.Domain.Entities;
 
 namespace ProAgil.API.Data
 {
