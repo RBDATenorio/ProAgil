@@ -5,10 +5,10 @@ using ProAgil.Domain.Entities;
 
 namespace ProAgil.Repository
 {
-    public class Repository : IRepository
+    public class ProAgilRepository : IProAgilRepository
     {
         private readonly DataContext _context;
-        public Repository(DataContext context)
+        public ProAgilRepository(DataContext context)
         {
             _context = context;
         }

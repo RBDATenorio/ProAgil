@@ -3,7 +3,7 @@ using ProAgil.Domain.Entities;
 
 namespace ProAgil.Repository
 {
-    public interface IRepository
+    public interface IProAgilRepository
     {
         //GERAL
          void Add<T>(T entity) where T : class;
