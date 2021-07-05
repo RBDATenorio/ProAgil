@@ -30,9 +30,16 @@
             </td>
             <td> {{ evento.tema }} </td>
             <td> {{ evento.local }} </td>
-            <td> {{ evento.dataEvento }} </td>
+            <td> {{ evento.dataEvento | dateTimeFormat }} </td>
             <td> {{ evento.qtdPessoas }} </td>
-            <td> {{ evento.lote }} </td>
+            <td> 
+                <div *ngIf="!evento.lotes.length">
+                    Lote não declarado
+                </div>
+                <div *ngIf="evento.lotes.length">
+                    {{ evento.lotes[0].nome | uppercase }}
+                </div>
+            </td>
             <td>
                 <a href="#" class="text-dark"><i class="far fa-edit mr-1"></i></a>
                 <a href="#" class="text-dark"><i class="far fa-trash-alt"></i></a>
