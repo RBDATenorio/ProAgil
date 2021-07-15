@@ -1,5 +1,5 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Evento } from '../_models/Evento';
 import { EventoService } from '../_services/Evento.service';
@@ -31,10 +31,12 @@ export class EventosComponent implements OnInit {
   eventosFiltrados: any = [];
 
   constructor(private eventoService: EventoService,
-              private modalService: BsModalService) { }
+              private modalService: BsModalService,
+              private fb: FormBuilder) { }
 
   ngOnInit(): void { 
     this.getEventos();
+    this.validation();
   }
 
   openModal(template: TemplateRef<any>) {
@@ -61,14 +63,21 @@ export class EventosComponent implements OnInit {
   }
 
   validation() {
-    this.registerForm = new FormGroup({
-      tema: new FormControl,
-      local: new FormControl,
-      dataEvento: new FormControl,
-      qtdPessoas: new FormControl,
-      imagemUrl: new FormControl,
-      telefone: new FormControl,
-      email: new FormControl
+    this.registerForm = this.fb.group({
+      tema: ['', [
+        Validators.required,
+        Validators.minLength(4),
+        Validators.maxLength(50)
+      ]],
+      local: ['', Validators.required],
+      dataEvento: ['', Validators.required],
+      qtdPessoas: ['', Validators.required],
+      imagemUrl: ['', Validators.required],
+      telefone: ['', Validators.required],
+      email: ['', [
+        Validators.required,
+        Validators.email
+      ]]
     });
   }
 
