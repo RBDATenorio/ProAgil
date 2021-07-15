@@ -20,8 +20,6 @@ export class EventosComponent implements OnInit {
   _filtroLista = '';
   registerForm!: FormGroup;
 
-  modalRef?: BsModalRef;
-
   get filtroLista(): string {
     return this._filtroLista;
   }
@@ -46,8 +44,8 @@ export class EventosComponent implements OnInit {
     this.validation();
   }
 
-  openModal(template: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(template);
+  openModal(template: any) {
+    template.show();
   }
 
   getEventos() {
