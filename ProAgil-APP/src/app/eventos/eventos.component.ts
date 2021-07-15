@@ -1,4 +1,5 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Evento } from '../_models/Evento';
 import { EventoService } from '../_services/Evento.service';
@@ -14,6 +15,7 @@ export class EventosComponent implements OnInit {
   imagemLargura = 50;
   imagemMargem = 2;
   _filtroLista = '';
+  registerForm!: FormGroup;
 
   modalRef?: BsModalRef;
 
@@ -56,5 +58,21 @@ export class EventosComponent implements OnInit {
       (evento: any) => evento.tema.toLocaleLowerCase().indexOf(filtrarPor) !== -1
 
     );
+  }
+
+  validation() {
+    this.registerForm = new FormGroup({
+      tema: new FormControl,
+      local: new FormControl,
+      dataEvento: new FormControl,
+      qtdPessoas: new FormControl,
+      imagemUrl: new FormControl,
+      telefone: new FormControl,
+      email: new FormControl
+    });
+  }
+
+  salvarAlteracao() {
+
   }
 }
