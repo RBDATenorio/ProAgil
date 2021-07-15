@@ -82,12 +82,12 @@ namespace ProAgil.API.Controllers
             return BadRequest();
         }                        
     
-        [HttpPut]
-        public async Task<IActionResult> Put(int id, Evento model)
+        [HttpPut("{EventoId}")]
+        public async Task<IActionResult> Put(int EventoId, Evento model)
         {
             try
             {
-                var evento = await _repo.GetEventoAsyncById(id, false);
+                var evento = await _repo.GetEventoAsyncById(EventoId, false);
 
                 if(evento == null)
                 {
@@ -98,6 +98,7 @@ namespace ProAgil.API.Controllers
 
                 if(await _repo.SaveChangesAsync())
                 {
+                    
                     return Created($"/api/evento/{model.EventoId}", model);
                 }
             }

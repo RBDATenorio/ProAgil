@@ -8,7 +8,7 @@
     </div>
   </div>
   <div>
-    <div class="btn btn btn-outline-primary" (click)="openModal(template)">
+    <div class="btn btn btn-outline-primary" (click)="novoEvento(template)">
       Novo Evento
     </div>
   </div>
@@ -49,7 +49,7 @@
       </td>
       <td>
         <a href="#" class="text-dark" tooltip="Editar" 
-        (click)="openModal(template)">
+        (click)="editarEvento(evento, template)">
         <i class="far fa-edit mr-1"></i>
       </a>
       <a href="#" class="text-dark" tooltip="Excluir">
@@ -72,7 +72,7 @@ role="dialog" aria-labelledby="dialog-sizes-name1">
 <div class="modal-dialog modal-lg">
   <div class="modal-content">
     <div class="modal-header">
-      <h4 id="dialog-sizes-name1" class="modal-title pull-left">Large modal</h4>
+      <h4 id="dialog-sizes-name1" class="modal-title pull-left">Cadastro de Evento</h4>
       <button type="button" class="close pull-right" (click)="template.hide()" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
@@ -91,7 +91,7 @@ role="dialog" aria-labelledby="dialog-sizes-name1">
           </div>
           <div *ngIf="registerForm.get('tema')!.hasError('minlength')
           && registerForm.get('tema')!.touched" class="invalid-feedback">
-          Tema deve ter no mínimo 4 Caracters.
+          Tema deve ter no mínimo 3 Caracters.
         </div>
       </div>
     </div>  
@@ -172,7 +172,7 @@ role="dialog" aria-labelledby="dialog-sizes-name1">
   <button class="btn btn-secondary" (click)="openModal(template)">
     Fechar
   </button>
-  <button class="btn btn-primary" [disabled]="!registerForm.valid" (click)="salvarAlteracao()">
+  <button class="btn btn-primary" [disabled]="!registerForm.valid" (click)="salvarAlteracao(template)">
     Salvar Alterações
   </button>
 </div>
