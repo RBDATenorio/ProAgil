@@ -108,7 +108,8 @@
                 [ngClass]="{'is-invalid': registerForm.get('dataEvento')!.errors && registerForm.get('dataEvento')!.touched}"
                 class="form-control" 
                 formControlName="dataEvento"
-                placeholder="Insira uma data">
+                placeholder="Insira uma data"
+                bsDatepicker>
         <div class="invalid-feedback">
             A data é obrigatória
         </div>
