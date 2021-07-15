@@ -91,7 +91,7 @@ role="dialog" aria-labelledby="dialog-sizes-name1">
           </div>
           <div *ngIf="registerForm.get('tema')!.hasError('minlength')
           && registerForm.get('tema')!.touched" class="invalid-feedback">
-          Tema deve ter no mínimo 4 Caracters.
+          Tema deve ter no mínimo 3 Caracters.
         </div>
       </div>
     </div>  
@@ -172,7 +172,7 @@ role="dialog" aria-labelledby="dialog-sizes-name1">
   <button class="btn btn-secondary" (click)="openModal(template)">
     Fechar
   </button>
-  <button class="btn btn-primary" [disabled]="!registerForm.valid" (click)="salvarAlteracao()">
+  <button class="btn btn-primary" [disabled]="!registerForm.valid" (click)="salvarAlteracao(template)">
     Salvar Alterações
   </button>
 </div>

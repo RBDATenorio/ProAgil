@@ -15,6 +15,7 @@ defineLocale('pt-br', ptBrLocale);
 export class EventosComponent implements OnInit {
 
   eventos?: Evento[];
+  evento!: Evento;
   imagemLargura = 50;
   imagemMargem = 2;
   _filtroLista = '';
@@ -71,7 +72,7 @@ export class EventosComponent implements OnInit {
     this.registerForm = this.fb.group({
       tema: ['', [
         Validators.required,
-        Validators.minLength(4),
+        Validators.minLength(3),
         Validators.maxLength(50)
       ]],
       local: ['', Validators.required],
@@ -86,7 +87,17 @@ export class EventosComponent implements OnInit {
     });
   }
 
-  salvarAlteracao() {
-
+  salvarAlteracao(template: any) {
+    if(this.registerForm.valid)
+    {
+      this.evento = Object.assign({}, this.registerForm.value);
+      this.eventoService.postEvento(this.evento).subscribe(
+        () => {
+          template.hide();
+          this.getEventos();
+        },
+        () => {}
+      );
+    }
   }
 }
