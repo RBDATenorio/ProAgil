@@ -31,4 +31,9 @@ export class EventoService {
   {
     return this.httpClient.post(this.baseUrl, evento);
   }
+  
+  putEvento(evento: Evento)
+  {
+    return this.httpClient.put(`${this.baseUrl}/${evento.eventoId}`, evento);
+  }  
 }

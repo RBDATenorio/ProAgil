@@ -19,6 +19,7 @@ export class EventosComponent implements OnInit {
   imagemLargura = 50;
   imagemMargem = 2;
   _filtroLista = '';
+  modoSalvar = 'post';
   registerForm!: FormGroup;
 
   get filtroLista(): string {
@@ -46,7 +47,21 @@ export class EventosComponent implements OnInit {
   }
 
   openModal(template: any) {
+    this.registerForm.reset();
     template.show();
+  }
+
+  novoEvento(template: any) {
+    this.modoSalvar = 'post';
+    this.openModal(template);
+  }
+
+  editarEvento(evento: Evento, template: any) {
+    this.modoSalvar = 'put';
+    this.openModal(template);
+    this.evento = evento;
+    this.registerForm.patchValue(evento);
+
   }
 
   getEventos() {
@@ -89,15 +104,24 @@ export class EventosComponent implements OnInit {
 
   salvarAlteracao(template: any) {
     if(this.registerForm.valid)
-    {
-      this.evento = Object.assign({}, this.registerForm.value);
-      this.eventoService.postEvento(this.evento).subscribe(
-        () => {
-          template.hide();
-          this.getEventos();
-        },
-        () => {}
-      );
-    }
+      if(this.modoSalvar === 'post') { 
+        this.evento = Object.assign({}, this.registerForm.value);
+        this.eventoService.postEvento(this.evento).subscribe(
+          () => {
+            template.hide();
+            this.getEventos();
+          },
+          () => {}
+        );
+      } else {
+          this.evento = Object.assign({eventoId: this.evento.eventoId}, this.registerForm.value);
+          this.eventoService.putEvento(this.evento).subscribe(
+            () => {
+              template.hide();
+              this.getEventos();
+            },
+            () => {}
+          );
+      }
   }
 }
