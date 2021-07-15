@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
+import {BsDatepickerModule} from 'ngx-bootstrap/datepicker';
 
 import { AppComponent } from './app.component';
 import { EventosComponent } from './eventos/eventos.component';
@@ -25,6 +26,8 @@ import { DateTimeFormatPipe } from './_helper/dateTimeFormat.pipe';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    BrowserAnimationsModule,
+    BsDatepickerModule.forRoot(),
     BsDropdownModule.forRoot(),
     TooltipModule.forRoot(),
     ModalModule.forRoot(),
