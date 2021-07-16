@@ -110,7 +110,7 @@ namespace ProAgil.API.Controllers
             return BadRequest();
         }   
 
-        [HttpDelete] 
+        [HttpDelete("{id}")] 
         public async Task<IActionResult> Delete(int id)
         {
             try
