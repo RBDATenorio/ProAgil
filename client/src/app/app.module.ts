@@ -12,18 +12,24 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { ToastrModule } from 'ngx-toastr';
 
 import { AppComponent } from './app.component';
-import { EventosComponent } from './eventos/eventos.component';
 import { NavComponent } from './nav/nav.component';
+import { EventosComponent } from './eventos/eventos.component';
+import { PalestrantesComponent } from './palestrantes/palestrantes.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { ContatosComponent } from './contatos/contatos.component';
 
 import { DateTimeFormatPipe } from './_helper/dateTimeFormat.pipe';
 
 @NgModule({
-  declarations: [
+  declarations: [			
     AppComponent,
-    EventosComponent,
     NavComponent,
+    EventosComponent,
+    PalestrantesComponent,
+    DashboardComponent,
+    ContatosComponent,
     DateTimeFormatPipe
-  ],
+   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
